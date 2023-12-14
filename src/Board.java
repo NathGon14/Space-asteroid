@@ -11,7 +11,7 @@ import java.util.Random;
 public class Board extends JPanel implements  ActionListener {
 
 
-    final int SHIP_SCALE  =5 ;
+    final int SHIP_SCALE  =5;
     int ship_width =16 * SHIP_SCALE;
     int ship_height =16 * SHIP_SCALE;
 
@@ -215,8 +215,10 @@ public class Board extends JPanel implements  ActionListener {
      }
      public void moveShip(int x, int y ){
 
-        this.ship_x= x - ship_width/2;
+       this.ship_x= 50;
         this.ship_y = y- ship_height/2;
+
+
      }
 
     public  class Rock{
@@ -247,11 +249,11 @@ public class Board extends JPanel implements  ActionListener {
                 // top or bottom
                 rock_y = random.nextBoolean() ? -rock_height : SCREEN_HEIGHT-rock_height ;
 
-                rock_x  =random.nextInt((SCREEN_WIDTH-rock_width));
+                rock_x  =random.nextInt(SCREEN_WIDTH/2,(SCREEN_WIDTH-rock_width));
             }else{
-                rock_x = random.nextBoolean() ? -rock_width : SCREEN_WIDTH-rock_width;
+                rock_x =  SCREEN_WIDTH-rock_width;
 
-                rock_y = random.nextInt((SCREEN_HEIGHT-rock_height));
+                rock_y = random.nextInt(SCREEN_HEIGHT/2,(SCREEN_HEIGHT-rock_height));
             }
 
         }
@@ -351,7 +353,10 @@ public class Board extends JPanel implements  ActionListener {
         @Override
         public void keyReleased(KeyEvent e) {
 
-            gameStart();
+
+            if(e.getKeyCode() == KeyEvent.VK_SPACE){
+                gameStart();
+            }
         }
     }
 
